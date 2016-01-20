@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="ahmad.aghazadeh.mvp.fragment.login.LoginModelView" />
+
+        <variable
+            name="handler"
+            type="ahmad.aghazadeh.mvp.fragment.login.LoginPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- bind text of view model to the textview, bind visibility to loading -->
+        <EditText
+            bind:addTextChangedListener="@{model.onUsernameChanged}"
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:textSize="40sp"
+            />
+
+        <EditText
+            bind:addTextChangedListener="@{model.onPasswordChanged}"
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:textSize="40sp"
+            android:inputType="textPassword" />
+
+        <!-- bind visibility to loading -->
+        <Button
+            android:onClick="@{handler.onClickLogin}"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.userName}"
+            android:textSize="22sp"
+             />
+
+        <!-- bind visibility to loading -->
+        <ProgressBar
+            android:id="@+id/isLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateOnly="true"
+            />
+    </LinearLayout>
+</layout>
